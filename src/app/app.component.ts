@@ -1,10 +1,19 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'text-search-module';
+
+  public findEmmit = new Observable<string>();
+  public findControl: FormControl;
+
+  constructor() {
+    this.findControl = new FormControl('');
+    this.findEmmit = this.findControl.valueChanges;
+  }
+
 }
